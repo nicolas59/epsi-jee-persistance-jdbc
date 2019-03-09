@@ -2,6 +2,7 @@ package fr.epsi.tp.persistance.dao;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Collection;
@@ -54,6 +55,7 @@ public class ProduitDAOTest {
     marque.setLibelle("Samsung");
     marque.setIdentifier(1L);
     produit.setMarque(marque);
+    produit.setPrix(BigDecimal.valueOf(50));
 
     Produit ret = produitdao.create(produit);
     assertThat(ret).isNotNull();
@@ -78,8 +80,9 @@ public class ProduitDAOTest {
 
   }
 
+  @Test
   public void should_find_product_by_libelle() throws SQLException {
-    Collection<Produit> produits = produitdao.findByLibelle("Pixel 2");
+    Collection<Produit> produits = produitdao.findByLibelle("Pixel 2 XL");
     assertThat(produits).isNotNull();
     assertThat(produits).isNotEmpty();
     assertThat(produits.size()).isEqualTo(1);
@@ -88,13 +91,14 @@ public class ProduitDAOTest {
       .findFirst()
       .orElseThrow();
     assertThat(prod.getDescription()).isEqualTo(
-        "Google Pixel 2 Android smartphone. Announced Oct 2017. Features 5.0″ AMOLED display, Snapdragon 835 chipset, 12.2 MP primary camera, 8 MP front camera, 2700 mAh battery, 128 GB storage, 4 GB RAM, Corning Gorilla Glass 5.");
+        "Google Pixel 2 XL Android smartphone. Announced Oct 2017. Features 6.0 P-OLED display, Snapdragon 835 chipset, 12.2 MP primary camera, 8 MP front camera, 3520 mAh battery, 128 GB storage, 4 GB RAM, Corning Gorilla Glass 5.");
     assertThat(prod.getMarque()).isNotNull();
     assertThat(prod.getMarque()
       .getLibelle()).isEqualTo("Google");
     assertThat(prod.getPrix()).isNotNull();
   }
 
+  @Test
   public void should_find_product_by_id() throws SQLException {
 
     Produit produit = produitdao.findAll()

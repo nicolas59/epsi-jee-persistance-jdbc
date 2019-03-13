@@ -97,6 +97,14 @@ public class ProduitDAOTest {
       .getLibelle()).isEqualTo("Google");
     assertThat(prod.getPrix()).isNotNull();
   }
+  
+  
+  @Test
+  public void should_find_no_result() throws SQLException {
+    Collection<Produit> produits = produitdao.findByLibelle("' or ''='");
+    assertThat(produits).isNotNull();
+    assertThat(produits).isEmpty();
+  }
 
   @Test
   public void should_find_product_by_id() throws SQLException {

@@ -11,6 +11,53 @@
   <name>epsi-jee-persistance-jdbc</name>
   <url>http://maven.apache.org</url>
 
+  <profiles>
+    <profile>
+      <id>mysql-5</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <dependencies>
+        <dependency>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+          <version>5.1.6</version>
+        </dependency>
+      </dependencies>
+    </profile>
+    <profile>
+      <id>mysql-8</id>
+      <dependencies>
+        <dependency>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+          <version>8.0.15</version>
+        </dependency>
+      </dependencies>
+    </profile>
+    <profile>
+      <id>h2</id>
+      <dependencies>
+        <dependency>
+          <groupId>com.h2database</groupId>
+          <artifactId>h2</artifactId>
+          <version>1.4.200</version>
+          <scope>test</scope>
+        </dependency>
+      </dependencies>
+    </profile>
+    <profile>
+      <id>postgres</id>
+      <dependencies>
+        <dependency>
+          <groupId>org.postgresql</groupId>
+          <artifactId>postgresql</artifactId>
+          <version>42.2.8</version>
+        </dependency>
+      </dependencies>
+    </profile>
+  </profiles>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>9</maven.compiler.source>
@@ -42,11 +89,7 @@
       <scope>test</scope>
     </dependency>
 
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>5.1.6</version>
-    </dependency>
+
     <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
     <dependency>
       <groupId>ch.qos.logback</groupId>

@@ -31,7 +31,7 @@ public class ProduitDAOTest {
       .getConnection();
 
     assert conn != null;
-
+    SQLUtils.initDatabase(this.conn);
     DatabaseConnection dbConn = new DatabaseConnection(conn);
     IDataSet dataSet = new FlatXmlDataSetBuilder().build(ProduitDAOTest.class.getResourceAsStream("/dataset.xml"));
     DatabaseOperation.CLEAN_INSERT.execute(dbConn, dataSet);

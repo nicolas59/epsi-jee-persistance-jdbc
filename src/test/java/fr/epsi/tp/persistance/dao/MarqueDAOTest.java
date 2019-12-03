@@ -27,7 +27,7 @@ public class MarqueDAOTest {
   public void beforeTest() throws Exception {
     this.conn = ConnectionFactory.getInstance()
       .getConnection();
-    
+    SQLUtils.initDatabase(this.conn);
     DatabaseConnection dbConn = new DatabaseConnection(conn);
     IDataSet dataSet = new FlatXmlDataSetBuilder().build(MarqueDAOTest.class.getResourceAsStream("/dataset.xml"));
     DatabaseOperation.CLEAN_INSERT.execute(dbConn, dataSet);
@@ -41,6 +41,15 @@ public class MarqueDAOTest {
     assertThat(marques.size()).isEqualTo(2);
   }
 
+  @Test
+  public void should_provide_samsung() throws SQLException {
+
+    Marque ret = marqueDao.findById(1L);
+    assertThat(ret).isNotNull();
+    assertThat(ret.getIdentifier()).isNotNull();
+    assertThat(ret.getLibelle()).isEqualTo("Samsung");
+  }
+  
   @Test
   public void should_add_marque() throws SQLException {
 

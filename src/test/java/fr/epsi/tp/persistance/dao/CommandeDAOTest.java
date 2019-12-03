@@ -29,10 +29,10 @@ public class CommandeDAOTest {
 
   @Before
   public void beforeTest() throws Exception {
-    this.conn = ConnectionFactory.getInstance()
-      .getConnection();
-    
+    this.conn =ConnectionFactory.getInstance().getConnection();
+    SQLUtils.initDatabase(this.conn);
     DatabaseConnection dbConn = new DatabaseConnection(conn);
+      
     IDataSet dataSet = new FlatXmlDataSetBuilder().build(CommandeDAOTest.class.getResourceAsStream("/dataset.xml"));
     DatabaseOperation.CLEAN_INSERT.execute(dbConn, dataSet);
   }

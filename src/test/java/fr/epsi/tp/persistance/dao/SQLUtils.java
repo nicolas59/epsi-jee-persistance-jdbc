@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class SQLUtils {
 
-  private static final String SQL_FILE = "/init-db-h2.sql";
+  private static final String SQL_FILE = "/init-db.sql";
 
   public static void initDatabase(Connection conn) {
     String lines;

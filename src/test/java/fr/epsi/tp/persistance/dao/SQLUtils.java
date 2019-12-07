@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class SQLUtils {
 
-  private static final String SQL_FILE = "/init-db.sql";
+  private static final String SQL_FILE = "/init-db-postgresql.sql";
 
   public static void initDatabase(Connection conn) {
     String lines;
@@ -22,7 +22,7 @@ public class SQLUtils {
       DatabaseMetaData metadata = conn.getMetaData();
       rs = metadata.getTables(null, null, "MARQUE", null);
       if(rs.next()) {
-        System.out.println("Tables already exists");
+        System.out.println("Tables already created");
         return;
       }
       lines = Files.readAllLines(Paths.get(CommandeDAOTest.class.getResource(SQL_FILE)

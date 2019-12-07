@@ -1,7 +1,3 @@
--- noinspection SqlDialectInspectionForFile
-
--- noinspection SqlNoDataSourceInspectionForFile
-
 CREATE TABLE marque (
   id SERIAL,
   libelle varchar(100) NOT NULL,
@@ -35,3 +31,8 @@ CREATE TABLE comm_produit (
   CONSTRAINT commande_FK FOREIGN KEY (commande_id) REFERENCES commande (id),
   CONSTRAINT produit_FK FOREIGN KEY (produit_id) REFERENCES produit (id)
 );
+
+alter sequence marque_id_seq restart with 100;
+alter sequence produit_id_seq restart with 100;
+alter sequence commande_id_seq restart with 100;
+

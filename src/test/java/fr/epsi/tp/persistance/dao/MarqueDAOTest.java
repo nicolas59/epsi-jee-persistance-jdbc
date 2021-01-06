@@ -66,7 +66,7 @@ public class MarqueDAOTest {
     Marque marque = marqueDao.findAll()
       .stream()
       .findFirst()
-      .orElseThrow();
+      .orElseThrow(() -> new RuntimeException("Object non trouvé"));
 
     marque.setLibelle("Nouvelle marque");
     marqueDao.update(marque);

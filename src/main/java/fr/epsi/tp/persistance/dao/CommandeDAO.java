@@ -21,4 +21,10 @@ public class CommandeDAO implements IJdbcCrud<Commande, Long> {
     // TODO Auto-generated method stub
     return null;
   }
+
+  @Override
+  public Commande update(Commande entity) throws SQLException {
+    return null;
+  }
 }
+

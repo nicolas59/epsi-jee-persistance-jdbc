@@ -22,4 +22,9 @@ public class MarqueDAO implements IJdbcCrud<Marque, Long> {
     return null;
   }
 
+  @Override
+  public Marque update(Marque entity) throws SQLException {
+    return null;
+  }
+
 }

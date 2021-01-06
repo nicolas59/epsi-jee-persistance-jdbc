@@ -27,4 +27,9 @@ public class ProduitDAO implements IJdbcCrud<Produit, Long> {
     return null;
   }
 
+  @Override
+  public Produit update(Produit entity) throws SQLException {
+    return null;
+  }
+
 }

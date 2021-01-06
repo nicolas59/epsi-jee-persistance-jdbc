@@ -68,7 +68,7 @@ public class ProduitDAOTest {
     Produit produit = produitdao.findAll()
       .stream()
       .findFirst()
-      .orElseThrow();
+      .orElseThrow(() -> new RuntimeException("Object non trouvé"));
 
     produit.setLibelle("Produit reconditionné");
     produitdao.update(produit);
@@ -89,7 +89,7 @@ public class ProduitDAOTest {
 
     Produit prod = produits.stream()
       .findFirst()
-      .orElseThrow();
+      .orElseThrow(() -> new RuntimeException("Object non trouvé"));
     assertThat(prod.getDescription()).isEqualTo(
         "Google Pixel 2 XL Android smartphone. Announced Oct 2017. Features 6.0 P-OLED display, Snapdragon 835 chipset, 12.2 MP primary camera, 8 MP front camera, 3520 mAh battery, 128 GB storage, 4 GB RAM, Corning Gorilla Glass 5.");
     assertThat(prod.getMarque()).isNotNull();
@@ -112,7 +112,7 @@ public class ProduitDAOTest {
     Produit produit = produitdao.findAll()
       .stream()
       .findFirst()
-      .orElseThrow();
+      .orElseThrow(() -> new RuntimeException("Object non trouvé"));
 
     Produit findProduit = produitdao.findById(produit.getIdentifier());
 
